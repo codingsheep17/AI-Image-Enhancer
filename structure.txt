@@ -1,0 +1,34 @@
+ai-image-enhancer/
+│
+├── app.py
+│
+├── src/
+│   ├── inference/
+│   │   ├── enhancer.py
+│   │   └── model_loader.py
+│   │
+│   ├── preprocessing/
+│   │   └── image_processor.py
+│   │
+│   ├── postprocessing/
+│   │   └── image_processor.py
+│   │
+│   └── utils/
+│       ├── validation.py
+│       └── helpers.py
+│
+├── models/
+│   └── weights/
+│
+├── tests/
+│   └── test_enhancer.py
+│
+├── assets/
+│
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── .dockerignore
+├── .gitignore
+├── README.md
+└── LICENSE
