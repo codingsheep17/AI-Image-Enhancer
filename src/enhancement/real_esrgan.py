@@ -26,17 +26,39 @@ elif "state_dict" in checkpoint:
 else:
     state_dict = checkpoint
 
-# Load the fixed state dict into your model
+# Load the fixed state dict in model
 model.load_state_dict(state_dict, strict=True)
 model = model.to("cpu")
 
 # Inference Engine Building
 upsampler = RealESRGANer(
     scale=4,
-    model_path=model_path,  
+    model_path=model_path,
+    model=model,
     tile=0,
     tile_pad=10,
     pre_pad=0,
     half=False
 )
-print("Real-ESRGAN model loaded successfully!")
+
+#enhancer function
+def enhance_image(image):
+    output, _ = upsampler.enhance(image, outscale=4)
+    return output
+
+#testing the img enhancement
+if __name__ == "__main__":
+    import cv2
+
+    image = cv2.imread("D:/Desktop/AI IMG ENHANCER/test1.png")
+
+    if image is None:
+        raise ValueError("Unable to load test image.")
+
+    enhanced_image = enhance_image(image)
+
+    cv2.imwrite("real_esrgan_output.png", enhanced_image)
+
+    print("Image enhanced successfully!")
+
+# first img enchancing test passed (although not so satisfying)
