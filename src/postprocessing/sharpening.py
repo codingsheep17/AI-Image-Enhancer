@@ -13,5 +13,6 @@ if __name__ == "__main__":
 
     cv2.imwrite("sharpened_test.png", sharpened)
 
-    print("Sharpening completed!")
+    print("Sharpening completed")
+    
 #Original - Blur -> Edge emphasis -> Sharper image
