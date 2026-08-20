@@ -11,3 +11,9 @@ model = RRDBNet(
     num_grow_ch=32,
     scale=4
 )
+
+#load state dict is adding the weights into our RRDBNet
+model_path = "D:/Desktop/AI IMG ENHANCER/models/RealESRGAN_x4plus.pth"
+model.load_state_dict(torch.load(model_path, map_location="cpu"))
+model = model.to("cpu")
+
