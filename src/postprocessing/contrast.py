@@ -20,4 +20,6 @@ if __name__ == "__main__":
 
     contrast = enhance_contrast(image)
 
-    print(contrast)
+    cv2.imwrite("contrast_test.png", contrast)
+
+    print("Contrast Testing Completed!")
