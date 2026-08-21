@@ -15,3 +15,9 @@ def enhance_contrast(image):
 
     return enhanced_image
 
+if __name__ == "__main__":
+    image = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
+
+    contrast = enhance_contrast(image)
+
+    print(contrast)
