@@ -99,3 +99,10 @@ def analyze_image(image):
         }
     
     #these will be conncted to the enhancement_rules.py for the creation of the ruling system
+    
+if __name__ == "__main__":
+    image = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
+
+    analysis = analyze_image(image)
+
+    print(analysis)
