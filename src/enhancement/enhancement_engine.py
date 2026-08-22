@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from src.postprocessing.sharpening import sharpen_image
 
 def enhance_image(image, rules):
     #makin the copy of the img
@@ -55,7 +56,7 @@ def enhance_image(image, rules):
         lab = cv2.merge((l_channel, a_channel, b_channel))
         enhanced_image = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
     
-    #now sharpening logic (blurry)
+   #now sharpening logic (blurry)
     if sharpness == "blurry":
         blurred = cv2.GaussianBlur(
             enhanced_image,
@@ -69,5 +70,5 @@ def enhance_image(image, rules):
             -0.5,
             0
         )
-    
+    #changed te sharpening logic inside engine
     return enhanced_img
