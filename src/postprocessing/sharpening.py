@@ -16,13 +16,19 @@ def sharpen_image(image):
 
     return sharpened
 
+def calculate_sharpness(image):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    return cv2.Laplacian(gray, cv2.CV_64F).var()
+
+#added the new testing function
 if __name__ == "__main__":
-    image = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
+    if __name__ == "__main__":
+        image = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
 
-    sharpened = sharpen_image(image)
+        sharpened = sharpen_image(image)
 
-    cv2.imwrite("sharpened_test_new.png", sharpened)
-
-    print("Sharpening completed")
-    
+        print("Original sharpness:", calculate_sharpness(image))
+        print("Sharpened sharpness:", calculate_sharpness(sharpened))
+        
 #Original - Blur -> Edge emphasis -> Sharper image
