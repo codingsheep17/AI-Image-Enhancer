@@ -1,10 +1,11 @@
 import cv2
 import numpy as np
-from src.postprocessing.sharpening import sharpen_image
+from src.postprocessing.sharpening import sharpen_image, calculate_sharpness
+
 
 def enhance_image(image, rules):
     #makin the copy of the img
-    enhanced_img = image.copy()
+    enhanced_image = image.copy()
     
     #read the enhancement rules
     resolution = rules["resolution_lvlr"]
@@ -60,4 +61,14 @@ def enhance_image(image, rules):
     if sharpness == "blurry":
         enhanced_image = sharpen_image(enhanced_image)
     
-    return enhanced_img
+    
+    return enhanced_image
+
+if __name__ == "__main__":
+    original = cv2.imread("D:/Desktop/AI IMG ENHANCER/test1.png")
+    esrgan = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
+    sharpened = cv2.imread("D:/Desktop/AI IMG ENHANCER/sharpened_test.png")
+
+    print("Original:", calculate_sharpness(original))
+    print("Real-ESRGAN:", calculate_sharpness(esrgan))
+    print("Sharpened:", calculate_sharpness(sharpened))
