@@ -1,7 +1,5 @@
 import cv2
 
-import cv2
-
 def sharpen_image(image):
     blurred = cv2.GaussianBlur(image, (0, 0), 1.5)
 
@@ -23,7 +21,6 @@ def calculate_sharpness(image):
 
 #added the new testing function
 if __name__ == "__main__":
-    if __name__ == "__main__":
         original = cv2.imread("D:/Desktop/AI IMG ENHANCER/test1.png")
         esrgan = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
         sharpened = cv2.imread("D:/Desktop/AI IMG ENHANCER/sharpened_test.png")

@@ -45,6 +45,12 @@ def determine_enhancement_rules(analysis):
     else:
         sharpness_level = "sharp"
         
+    #check sharpening need
+    if sharpness < 100:
+        sharpening_needed = True
+    else:
+        sharpening_needed = False
+        
     #now setting rules for the noise
     noise = analysis['noise_level']
     if noise < 5:
@@ -59,6 +65,7 @@ def determine_enhancement_rules(analysis):
         "brightness_lvlr":brightness_level,
         "contrast_lvlr":contrast_level,
         "sharpness_lvlr":sharpness_level,
-        "noise_lvlr":noise_level
+        "noise_lvlr":noise_level,
+        "sharpening_needed":sharpening_needed
     }
     

@@ -79,7 +79,7 @@ def analyze_image(image):
     
     #noise esmtimation (the diff b/w image and blurred version of itself)
     blurred = cv2.GaussianBlur(gray_scaled_img, (3,3), 0)
-    noise = gray_scaled_img.astype('float32') = blurred.astype('float32')
+    noise = gray_scaled_img.astype('float32') - blurred.astype('float32')
     #converted into float32 as sometimes it can produce -ve value
     noise_lvl = noise.std()
     #low noise -> clean, high noise -> noisy
