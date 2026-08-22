@@ -56,19 +56,8 @@ def enhance_image(image, rules):
         lab = cv2.merge((l_channel, a_channel, b_channel))
         enhanced_image = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
     
-   #now sharpening logic (blurry)
+    #changed the sharpening logic inside engine
     if sharpness == "blurry":
-        blurred = cv2.GaussianBlur(
-            enhanced_image,
-            (0, 0),
-            2.0
-        )
-        enhanced_image = cv2.addWeighted(
-            enhanced_image,
-            1.5,
-            blurred,
-            -0.5,
-            0
-        )
-    #changed te sharpening logic inside engine
+        enhanced_image = sharpen_image(enhanced_image)
+    
     return enhanced_img
