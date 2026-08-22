@@ -24,11 +24,12 @@ def calculate_sharpness(image):
 #added the new testing function
 if __name__ == "__main__":
     if __name__ == "__main__":
-        image = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
+        original = cv2.imread("D:/Desktop/AI IMG ENHANCER/test1.png")
+        esrgan = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
+        sharpened = cv2.imread("D:/Desktop/AI IMG ENHANCER/sharpened_test.png")
 
-        sharpened = sharpen_image(image)
-
-        print("Original sharpness:", calculate_sharpness(image))
-        print("Sharpened sharpness:", calculate_sharpness(sharpened))
+        print("Original:", calculate_sharpness(original))
+        print("Real-ESRGAN:", calculate_sharpness(esrgan))
+        print("Sharpened:", calculate_sharpness(sharpened))
         
 #Original - Blur -> Edge emphasis -> Sharper image
