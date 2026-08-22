@@ -1,9 +1,19 @@
 import cv2
 
+import cv2
+
 def sharpen_image(image):
-    blurred = cv2.GaussianBlur(image, (0, 0), 3)
-    sharpened = cv2.addWeighted(image, 1.5, blurred, -0.5, 0)
-    
+    blurred = cv2.GaussianBlur(image, (0, 0), 1.5)
+
+    sharpened = cv2.addWeighted(
+        image,
+        1.8,
+        blurred,
+        -0.8,
+        0
+    )
+#did made changes inside the function 
+
     return sharpened
 
 if __name__ == "__main__":
@@ -11,7 +21,7 @@ if __name__ == "__main__":
 
     sharpened = sharpen_image(image)
 
-    cv2.imwrite("sharpened_test.png", sharpened)
+    cv2.imwrite("sharpened_test_new.png", sharpened)
 
     print("Sharpening completed")
     
