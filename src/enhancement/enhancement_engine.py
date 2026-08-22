@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from src.postprocessing.sharpening import sharpen_image, calculate_sharpness
+from src.postprocessing.sharpening import sharpen_image
 
 
 def enhance_image(image, rules):
@@ -13,6 +13,7 @@ def enhance_image(image, rules):
     contrast = rules["contrast_lvlr"]
     sharpness = rules["sharpness_lvlr"]
     noise = rules["noise_lvlr"]
+    sharpening_needed = rules["sharpening_needed"]
     
     #noww the enhancement logic comes here
     
@@ -58,17 +59,35 @@ def enhance_image(image, rules):
         enhanced_image = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
     
     #changed the sharpening logic inside engine
-    if sharpness == "blurry":
+    if sharpening_needed:
         enhanced_image = sharpen_image(enhanced_image)
     
     
     return enhanced_image
 
-if __name__ == "__main__":
-    original = cv2.imread("D:/Desktop/AI IMG ENHANCER/test1.png")
-    esrgan = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
-    sharpened = cv2.imread("D:/Desktop/AI IMG ENHANCER/sharpened_test.png")
+# if __name__ == "__main__":
+#     original = cv2.imread("D:/Desktop/AI IMG ENHANCER/test1.png")
+#     esrgan = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
+#     sharpened = cv2.imread("D:/Desktop/AI IMG ENHANCER/sharpened_test.png")
 
-    print("Original:", calculate_sharpness(original))
-    print("Real-ESRGAN:", calculate_sharpness(esrgan))
-    print("Sharpened:", calculate_sharpness(sharpened))
+#     print("Original:", calculate_sharpness(original))
+#     print("Real-ESRGAN:", calculate_sharpness(esrgan))
+#     print("Sharpened:", calculate_sharpness(sharpened))
+
+# if __name__ == "__main__":
+#     image = cv2.imread("D:/Desktop/AI IMG ENHANCER/real_esrgan_output.png")
+
+#     test_rules = {
+#         "resolution_lvlr": "high",
+#         "brightness_lvlr": "normal",
+#         "contrast_lvlr": "normal",
+#         "sharpness_lvlr": "normal",
+#         "noise_lvlr": "low"
+#     }
+
+
+#     result = enhance_image(image, test_rules)
+#     cv2.imwrite(
+#         "D:/Desktop/AI IMG ENHANCER/engine_sharpened_test.png", result)
+#     print("Enhancement engine test completed.")
+
